@@ -5,7 +5,11 @@ class User {
   }
 
   age () {
-    return "age"
+    let userByear = this.date_of_birth.getFullYear()
+    let todayYear = new Date().getFullYear()
+    if (this._isBirthdayPassed()) {
+      return todayYear - userByear
+    } else { return (todayYear - userByear - 1)}
   }
 
   next_birthday () {
@@ -28,7 +32,7 @@ tests = [
 ]
 
 tests.forEach((date) => {
-  console.log(`${date} => ${new User("Test", date)._isBirthdayPassed()}`)
+  console.log(`${date} => ${new User("Test", date).age()}`)
 })
 
 tests.forEach((date) => {
