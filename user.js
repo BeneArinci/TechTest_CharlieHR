@@ -13,7 +13,12 @@ class User {
   }
 
   next_birthday () {
-    return "next birthday"
+    let todayYear = new Date().getFullYear()
+    if(this._isBirthdayPassed()) {
+      return new Date(todayYear+1, this.date_of_birth.getMonth(), this.date_of_birth.getDate())
+    } else {
+      return new Date(todayYear, this.date_of_birth.getMonth(), this.date_of_birth.getDate())
+    }
   }
 
   _isBirthdayPassed () {
