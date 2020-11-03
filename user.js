@@ -11,6 +11,14 @@ class User {
   next_birthday () {
     return "next birthday"
   }
+
+  _isBirthdayPassed () {
+    let todayMonth = new Date().getMonth()
+    let todayDay = new Date().getDate()
+    let userBDay = this.date_of_birth.getDate()
+    let userBMonth = this.date_of_birth.getMonth()
+    return (todayMonth > userBMonth || (userBMonth === todayMonth && todayDay >= userBDay))
+  }
 }
 
 tests = [
@@ -20,7 +28,7 @@ tests = [
 ]
 
 tests.forEach((date) => {
-  console.log(`${date} => ${new User("Test", date).age()}`)
+  console.log(`${date} => ${new User("Test", date)._isBirthdayPassed()}`)
 })
 
 tests.forEach((date) => {
